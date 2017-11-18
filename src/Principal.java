@@ -165,8 +165,11 @@ public class Principal {
 
     /**
      * Cálculo da Mediana com complexidade logaritímica. 
-     * 
+     *  
      * Utilizando o HeapSort com complexidade O(n log n)
+     * 
+     * Página 154 Cormen 3d
+     * Mediana inferior com piso independente da paridade de n
      *
      * @param A Vetor com os dados
      * @param p Início do Vetor
@@ -174,27 +177,44 @@ public class Principal {
      * @return A posição da mediana em A
      */
     private static int medianaNLogN(int A[], int p, int r) {
-        int n = r;
-        int m = n / 2;
-        heapsort(A, r); //Ordena todo o vetor para encontrar a mediana
+        //Calcula a quantidade de elementos de p até r
+        //p = 1 e r = 5 = 5 - 1 + 1 = 5 elementos
+        //p = 6 e r = 10 = 10 - 6 + 1 = 5 elementos
+        int n = r - p + 1;
+        //Calcula a posição da mediana em relação a quantidade de elementos do intervalo de p até r
+        int m =  piso(n/2);
+        //Ordena todo o vetor para encontrar a mediana
+        heapsort(A, r); 
         if (n % 2 == 1) {
+            //Quantidade ímpar 
+            //Início do vetor mais a mediana
+            //p = 6 e r = 10 = 10 - 6 + 1 = 5 elementos
+            //m = piso(5 / 2) = 2
+            //mediana = 6 + 2 = 8
             return (p + m);
         } else {
-            return ((p + m) + (p + m - 1)) / 2;
+            //Quantidade par 
+            //Início do vetor mais a mediana
+            //p = 5 e r = 10 = 10 - 5 + 1= 6 elementos
+            //m = piso(6 / 2) = 3
+            //mediana = 6 + 3 - 1 = 7
+            return (p + m - 1);
         }
     }
 
     public static void main(String args[]) {
         
         //Vetor de dados
-        int A[] = {99, 33, 55, 77, 11, 22, 88, 66, 44};
+        int A[] = {99, 33, 55, 77, 11, 22, 88, 66, 44}; //Qtde ímpar de elementos
+        //int A[] = {99, 33, 55, 77, 11, 22, 88, 66}; //Qtde par de elementos
+        
         //Quantidade de elementos
         int r = A.length;
 
         System.out.println(">>> Cálculo da Mediana com complexidade logaritmica<<<");
         System.out.println("Vetor A antes: ");
-        for (int i = 0; i < r; i++) {
-            System.out.println((i) + " - " + A[i]);
+        for (int i = 1; i <= r; i++) {
+            System.out.println((i) + " - " + A[i-1]);
         }
 
         //Localiza a mediana
@@ -205,8 +225,8 @@ public class Principal {
         System.out.println("O Valor é da Mediana: " + A[q-1]);
 
         System.out.println("Vetor A após: ");
-        for (int i = 0; i < r; i++) {
-            System.out.println((i) + " - " + A[i]);
+        for (int i = 1; i <= r; i++) {
+            System.out.println((i) + " - " + A[i-1]);
         }
     }
 }
