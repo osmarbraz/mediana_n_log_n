@@ -135,7 +135,7 @@ public class Principal {
      * @param n Quantidade de elementos da árvore
      */
     private static void constroiMaxHeap(int A[], int n) {
-        for (int i = piso(n / 2); i >= 1; i--) {
+        for (int i = piso(n / 2.0); i >= 1; i--) {
             maxHeapify(A, n, i);
         }
     }
@@ -182,7 +182,7 @@ public class Principal {
         //p = 6 e r = 10 = 10 - 6 + 1 = 5 elementos
         int n = r - p + 1;
         //Calcula a posição da mediana em relação a quantidade de elementos do intervalo de p até r
-        int m =  piso(n/2);
+        int m =  piso(n / 2.0);
         //Ordena todo o vetor para encontrar a mediana
         heapsort(A, r); 
         if (n % 2 == 1) {
