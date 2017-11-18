@@ -5,7 +5,7 @@
  * Disciplinas: Projeto e Análise de Algoritmos
  * Prof Alexandre Gonçalves da Silva 
  * 
- * Cálculo da Mediana com complexidade logaritmica utilizando o HeapSort.
+ * Cálculo da Mediana com complexidade logarítmica utilizando o HeapSort.
  *
  * Atenção:
  * Vetor em java inicia em 0, os algoritmos consideram início em 1.
@@ -106,7 +106,7 @@ public class Principal {
      */
     private static void maxHeapify(int A[], int n, int i) {
         //Armazena o maior elemento
-        int maior = 0;
+        int maior;
         //Filho da esquerda
         int esquerda = esquerda(i);                             //Theta(1)
         //Filho da direita
@@ -168,7 +168,7 @@ public class Principal {
      *  
      * Utilizando o HeapSort com complexidade O(n log n)
      * 
-     * Página 154 Cormen 3d
+     * Página 155 Cormen 3d
      * Mediana inferior com piso independente da paridade de n
      *
      * @param A Vetor com os dados
@@ -211,7 +211,7 @@ public class Principal {
         //Quantidade de elementos
         int r = A.length;
 
-        System.out.println(">>> Cálculo da Mediana com complexidade logaritmica<<<");
+        System.out.println(">>> Cálculo da Mediana com complexidade logarítmica<<<");
         System.out.println("Vetor A antes: ");
         for (int i = 1; i <= r; i++) {
             System.out.println((i) + " - " + A[i-1]);
